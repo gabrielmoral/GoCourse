@@ -4,6 +4,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"sync"
 )
 
 func main() {
@@ -14,6 +15,10 @@ func main() {
 		"https://hangouts.google.com",
 	}
 
+	var wg sync.WaitGroup
+
+	wg.Add(len(sites))
+
 	for _, site := range sites {
 		go func(site string) {
 			res, err := http.Get(site)
@@ -21,6 +26,9 @@ func main() {
 			}
 
 			io.WriteString(os.Stdout, res.Status+"\n")
+			wg.Done()
 		}(site)
 	}
+
+	wg.Wait()
 }
