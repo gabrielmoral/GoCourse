@@ -8,9 +8,8 @@ import (
 
 func newServer() *http.Server {
 	return &http.Server{
-		Addr:      ":8080",
-		Handler:   newMux(),
-		TLSConfig: tlsConfig(),
-		ErrorLog:  log.New(os.Stderr, "HTTP Server says: ", log.Llongfile),
+		Addr:     ":8080",
+		Handler:  newMux(),
+		ErrorLog: log.New(os.Stderr, "HTTP Server says: ", log.Llongfile),
 	}
 }

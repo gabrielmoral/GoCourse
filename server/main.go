@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	if err := newServer().ListenAndServeTLS("", ""); err != nil {
+	if err := newServer().ListenAndServe(); err != nil {
 		log.Fatal(err)
 	}
 }
