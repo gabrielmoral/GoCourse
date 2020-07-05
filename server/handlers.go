@@ -27,5 +27,5 @@ func greetHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	fmt.Fprintf(w, "Hello %s, from %s\n", t.Name, t.Location)
+	fmt.Fprintf(w, "From handler (very expensive operation) - Hello %s, from %s\n", t.Name, t.Location)
 }
